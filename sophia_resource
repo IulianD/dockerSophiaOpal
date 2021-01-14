@@ -1,0 +1,8 @@
+ {
+        "name":"db",
+        "project":"sophia",
+        "provider":"resourcex",
+        "factory":"sql",
+        "parameters":"{\"driver\":\"postgresql\",\"host\":\"postgres1\",\"port\":\"5432\",\"db\":\"sophia\"}",
+        "credentials":"{\"username\":\"opal\",\"password\":\"opalpass\"}"
+}

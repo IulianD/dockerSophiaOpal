@@ -1,0 +1,49 @@
+version: '3'
+services:
+
+    postgres1:
+        image: idragan/postgres:sophia
+        hostname: postgres1
+        environment:
+                - POSTGRES_PASSWORD=opalpass    
+             
+
+
+    rserver1:
+        image: obiba/opal-rserver:latest
+        hostname: rserver1
+        environment:
+            - JAVA_OPTS=-Xms64m -Xmx512m -XX:+UseG1GC
+        volumes:
+            - srv1:/srv
+
+
+    opal_server1:
+        image: idragan/opalsrv:latest
+        hostname: opal_server1
+        expose:
+            - 8443
+            - 8080
+        ports:
+            - "8843:8443"
+            - "8880:8080"
+            # Ports convention: <port on host>:<port inside container>
+        links:
+            - rserver1
+            - postgres1  
+        environment:
+            - JAVA_OPTS=-Xms32m -Xmx512m -XX:+UseG1GC
+            - OPAL_ADMINISTRATOR_PASSWORD=password
+            - RSERVER_HOST=rserver1 
+            - POSTGRESIDS_HOST=postgres1
+            - POSTGRESIDS_DATABASE=opal_id
+            - POSTGRESIDS_USER=opal
+            - POSTGRESIDS_PASSWORD=opalpass  
+            - POSTGRESDATA_HOST=postgres1 
+            - POSTGRESDATA_DATABASE=opal_data
+            - POSTGRESDATA_USER=opal
+            - POSTGRESDATA_PASSWORD=opalpass  
+                
+
+volumes:
+    srv1:

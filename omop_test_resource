@@ -1,0 +1,8 @@
+ {
+        "name":"db",
+        "project":"omop_test",
+        "provider":"resourcex",
+        "factory":"sql",
+        "parameters":"{\"driver\":\"postgresql\",\"host\":\"postgres1\",\"port\":\"5432\",\"db\":\"omop_data\"}",
+        "credentials":"{\"username\":\"opal\",\"password\":\"opalpass\"}"
+}
