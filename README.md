@@ -1,1 +1,1 @@
-# dockerSophiaOpal 
+# dockerSophiaOpal
