@@ -6,7 +6,9 @@ services:
         hostname: postgres1
         environment:
                 - POSTGRES_PASSWORD=opalpass    
-             
+        volumes:
+                - pgdata:/var/lib/postgresql/data          
+                  # added pgdata volume to separate it from the main container    
 
 
     rserver1:
@@ -19,7 +21,7 @@ services:
 
 
     opal_server1:
-        image: idragan/opalsrv:latest
+        image: idragan/opal-sophia
         hostname: opal_server1
         expose:
             - 8443
@@ -47,3 +49,4 @@ services:
 
 volumes:
     srv1:
+    pgdata:        

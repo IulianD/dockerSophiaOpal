@@ -12,6 +12,7 @@ RUN echo "opal rest /datashield/package/dsBase/methods --opal https://localhost:
 RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?manager=gh&name=sib-swiss/dsSwissKnife"' >> /opt/opal/bin/first_run.sh
 RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?manager=gh&name=sib-swiss/resourcex"' >> /opt/opal/bin/first_run.sh
 RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?name=DSI"'  >> /opt/opal/bin/first_run.sh
+RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?name=tensorflow"'  >> /opt/opal/bin/first_run.sh
 RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?manager=gh&name=vanduttran/dsSSCP"'  >> /opt/opal/bin/first_run.sh
 RUN echo 'opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/service/r/packages?manager=gh&name=vanduttran/dsSSCPclient"'  >> /opt/opal/bin/first_run.sh
 RUN echo "opal rest /datashield/package/dsSwissKnife/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT"  >> /opt/opal/bin/first_run.sh
