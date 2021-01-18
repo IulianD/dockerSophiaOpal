@@ -3,6 +3,6 @@
         "project":"omop_test",
         "provider":"resourcex",
         "factory":"sql",
-        "parameters":"{\"driver\":\"postgresql\",\"host\":\"postgres1\",\"port\":\"5432\",\"db\":\"omop_data\"}",
+        "parameters":"{\"driver\":\"postgresql\",\"host\":\"postgres1\",\"port\":\"5432\",\"db\":\"omop_test\"}",
         "credentials":"{\"username\":\"opal\",\"password\":\"opalpass\"}"
 }
