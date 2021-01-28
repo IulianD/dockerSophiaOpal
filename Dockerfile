@@ -2,9 +2,9 @@ FROM obiba/opal:3.0
 
 COPY omop_test_resource /opt/opal/data
 COPY sophia_resource /opt/opal/data
-RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name test --database mongodb" >> /opt/opal/bin/first_run.sh
-RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name sophia --database mongodb" >> /opt/opal/bin/first_run.sh
-RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name omop_test --database mongodb" >> /opt/opal/bin/first_run.sh
+RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name test --database postgresdb" >> /opt/opal/bin/first_run.sh
+RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name sophia --database postgresdb" >> /opt/opal/bin/first_run.sh
+RUN echo "opal project -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD --add --name omop_test --database postgresdb" >> /opt/opal/bin/first_run.sh
 RUN echo "opal user --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD  --add --name guest --upassword guest123" >> /opt/opal/bin/first_run.sh
 RUN echo "opal perm-table --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD --type USER --project test --subject guest  --permission view --add --tables CNSIM" >> /opt/opal/bin/first_run.sh
 RUN echo "opal perm-datashield --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD --type USER --subject guest --permission use --add" >> /opt/opal/bin/first_run.sh
