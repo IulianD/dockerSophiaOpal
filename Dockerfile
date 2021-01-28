@@ -1,4 +1,4 @@
-FROM obiba/opal:3.0.5
+FROM obiba/opal:3.0
 
 COPY omop_test_resource /opt/opal/data
 COPY sophia_resource /opt/opal/data
