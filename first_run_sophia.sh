@@ -18,7 +18,7 @@ opal user --opal https://localhost:8443 --user administrator --password $OPAL_AD
 if [[ -v CNSIM_FILE ]]; then
     opal file -up /opt/opal/data/$CNSIM_FILE /home/administrator -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD  -v
     cat /opt/opal/data/test_cnsim.json | opal rest -o https://localhost:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD -m POST /datasource/test/tables --content-type "application/json" -v
-    opal import-csv --o https://localhost:8443 --u administrator --password $OPAL_ADMINISTRATOR_PASSWORD --destination test --path /home/administrator/$CNSIM_FILE --tables CNSIM --separator , --type CNSIM
+    opal import-csv --o https://localhost:8443 --u administrator --password $OPAL_ADMINISTRATOR_PASSWORD --destination test --path /home/administrator/$CNSIM_FILE --tables CNSIM --type CNSIM
     opal perm-table --o https://localhost:8443 --u administrator --password $OPAL_ADMINISTRATOR_PASSWORD --type USER --project test --subject guest  --permission view --add --tables CNSIM
 fi
 opal perm-datashield --opal https://localhost:8443 --user administrator --password $OPAL_ADMINISTRATOR_PASSWORD --type USER --subject guest --permission use --add
