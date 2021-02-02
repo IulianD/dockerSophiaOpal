@@ -31,3 +31,4 @@ opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMIN
 opal rest /datashield/package/dsSwissKnife/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
 opal rest /datashield/package/dsSSCP/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
 opal rest /datashield/package/dsSSCPclient/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
+opal rest /datashield/package/resourcex/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
