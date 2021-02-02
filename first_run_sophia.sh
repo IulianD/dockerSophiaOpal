@@ -32,3 +32,4 @@ opal rest /datashield/package/dsSwissKnife/methods --opal https://localhost:8443
 opal rest /datashield/package/dsSSCP/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
 opal rest /datashield/package/dsSSCPclient/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
 opal rest /datashield/package/resourcex/methods --opal https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method PUT
+opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/project/omop_test/permissions/resources?type=USER&permission=RESOURCES_VIEW&principal=guest"
