@@ -96,8 +96,59 @@ services:
             - POSTGRESDATA_PASSWORD=opalpass  
             - CNSIM_FILE=cnsim2.csv
 
-volumes:
+    postgres3:
+        image: idragan/postgres-sophia
+        hostname: postgres1
+        entrypoint: ["docker-entrypoint.sh", "-c", "config_file=/sophia/conf/postgresql.conf"]
+        environment:
+                - POSTGRES_PASSWORD=opalpass    
+        volumes:
+                - pgdata3:/sophia/data         
+                  # added pgdata volume to separate it from the main container  
+                - ./postgresql.conf:/sophia/conf/postgresql.conf
+        shm_size: '1gb'          
+
+    rserver3:
+        image: obiba/opal-rserver:latest
+        hostname: rserver1
+        environment:
+            - JAVA_OPTS=-Xms64m -Xmx512m -XX:+UseG1GC
+        volumes:
+            - srv3:/srv
+
+
+    opal_server3:
+        image: idragan/opal-sophia
+        hostname: opal_server3
+        expose:
+            - 8443
+            - 8080
+        ports:
+            - "10843:8443"
+            - "10880:8080"
+            # Ports convention: <port on host>:<port inside container>
+        links:
+            - rserver3
+            - postgres3  
+        environment:
+            - JAVA_OPTS=-Xms32m -Xmx512m -XX:+UseG1GC
+            - OPAL_ADMINISTRATOR_PASSWORD=password
+            - RSERVER_HOST=rserver3 
+            - POSTGRESIDS_HOST=postgres3
+            - POSTGRESIDS_DATABASE=opal_id
+            - POSTGRESIDS_USER=opal
+            - POSTGRESIDS_PASSWORD=opalpass  
+            - POSTGRESDATA_HOST=postgres3 
+            - POSTGRESDATA_DATABASE=opal_data
+            - POSTGRESDATA_USER=opal
+            - POSTGRESDATA_PASSWORD=opalpass  
+            - CNSIM_FILE=cnsim3.csv
+
+        
+ volumes:
     srv1:
     pgdata1:        
     srv2:
     pgdata2:        
+    srv3:
+    pgdata3:        

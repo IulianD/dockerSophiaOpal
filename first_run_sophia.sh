@@ -33,3 +33,11 @@ if [[ -v CNSIM_FILE ]]; then
     opal perm-table --o https://localhost:8443 --u administrator --password $OPAL_ADMINISTRATOR_PASSWORD --type USER --project test --subject guest  --permission view --add --tables CNSIM
 fi
 opal rest -o https://localhost:8443 --user administrator --password  $OPAL_ADMINISTRATOR_PASSWORD --method POST "/project/omop_test/permissions/resources?type=USER&permission=RESOURCES_VIEW&principal=guest"
+
+# TODO:
+#openssl  req -newkey rsa:2048 -new -nodes -x509 -subj "/C=/ST=/L=/O=/CN="  -days 3650 -keyout key.pem -out cert.pem
+
+#cat /srv/cert.pem >> certificate.json
+
+#cat /opt/opal/data/certificate.json | opal rest -o https://opal_server2:8443 -u administrator -p $OPAL_ADMINISTRATOR_PASSWORD -m POST /system/subject-credentials --content-type "application/json" -v
+#
