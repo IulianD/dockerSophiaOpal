@@ -29,8 +29,8 @@ services:
             - 8443
             - 8080
         ports:
-            - "8843:8443"
-            - "8880:8080"
+            - "7843:8443"
+            - "7880:8080"
             # Ports convention: <port on host>:<port inside container>
         links:
             - rserver1
@@ -76,8 +76,8 @@ services:
             - 8443
             - 8080
         ports:
-            - "9843:8443"
-            - "9880:8080"
+            - "8843:8443"
+            - "8880:8080"
             # Ports convention: <port on host>:<port inside container>
         links:
             - rserver2
@@ -98,7 +98,7 @@ services:
 
     postgres3:
         image: idragan/postgres-sophia
-        hostname: postgres1
+        hostname: postgres3
         entrypoint: ["docker-entrypoint.sh", "-c", "config_file=/sophia/conf/postgresql.conf"]
         environment:
                 - POSTGRES_PASSWORD=opalpass    
@@ -124,8 +124,8 @@ services:
             - 8443
             - 8080
         ports:
-            - "10843:8443"
-            - "10880:8080"
+            - "9843:8443"
+            - "9880:8080"
             # Ports convention: <port on host>:<port inside container>
         links:
             - rserver3
@@ -143,9 +143,7 @@ services:
             - POSTGRESDATA_USER=opal
             - POSTGRESDATA_PASSWORD=opalpass  
             - CNSIM_FILE=cnsim3.csv
-
-        
- volumes:
+volumes:
     srv1:
     pgdata1:        
     srv2:
